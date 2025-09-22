@@ -7,7 +7,6 @@ import java.io.*;
 public class VerDiagramaUML {
     public static void main(String[] args) {
         try {
-            // 1. Definir el código UML que quieres dibujar
             String source = "@startuml\n" +
                     "skinparam groupInheritance 2\n" +
                     "\n" +
@@ -148,14 +147,13 @@ public class VerDiagramaUML {
                     "end note\n" +
                     "@enduml";
 
-            // 2. Generar imagen en un archivo temporal
+  
             File tempFile = File.createTempFile("uml-diagrama", ".png");
             try (OutputStream png = new FileOutputStream(tempFile)) {
                 SourceStringReader reader = new SourceStringReader(source);
                 reader.outputImage(png);
             }
 
-            // 3. Mostrar imagen en una ventana
             ImageIcon icon = new ImageIcon(tempFile.getAbsolutePath());
             JLabel label = new JLabel(icon);
             JScrollPane scrollPane = new JScrollPane(label);
